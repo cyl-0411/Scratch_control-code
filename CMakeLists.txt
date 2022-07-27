@@ -19,12 +19,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #Uncomment for hardware floating point
-#add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
+add_compile_definitions(ARM_MATH_CM0;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
 #add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 #add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 #Uncomment for software floating point
-#add_compile_options(-mfloat-abi=soft)
+add_compile_options(-mfloat-abi=soft)
 
 add_compile_options(-mcpu=cortex-m0 -mthumb -mthumb-interwork)
 add_compile_options(-ffunction-sections -fdata-sections -fno-common -fmessage-length=0)
@@ -49,11 +49,15 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc Drivers/STM32G0xx_HAL_Driver/Inc Drivers/STM32G0xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32G0xx/Include Drivers/CMSIS/Include)
+include_directories(Drivers/STM32G0xx_HAL_Driver/Inc
+        Drivers/STM32G0xx_HAL_Driver/Inc/Legacy
+        Drivers/CMSIS/Device/ST/STM32G0xx/Include
+        Drivers/CMSIS/Include
+        hardware user system)
 
 add_definitions(-DUSE_HAL_DRIVER -DSTM32G030xx)
 
-file(GLOB_RECURSE SOURCES "startup/*.*" "Drivers/*.*" "Core/*.*")
+file(GLOB_RECURSE SOURCES "system/*.*" "Drivers/*.*" "user/*.*" "hardware/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32G030F6Px_FLASH.ld)
 
