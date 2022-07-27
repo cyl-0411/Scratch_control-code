@@ -1,0 +1,8 @@
+//
+// Created by CYL04 on 2022/7/27.
+//
+
+#ifndef STM32G0XX_HAL_MSP_C_KEY_H
+#define STM32G0XX_HAL_MSP_C_KEY_H
+
+#endif //STM32G0XX_HAL_MSP_C_KEY_H

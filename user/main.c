@@ -3,6 +3,7 @@
 #include "dma.h"
 #include "tim.h"
 #include "gpio.h"
+#include "WS2812.h"
 
 void SystemClock_Config(void);
 
@@ -18,6 +19,8 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM1_Init();
 
+
+  WS2812_init();
   while (1)
   {
 
