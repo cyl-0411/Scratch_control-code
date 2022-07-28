@@ -1,9 +1,5 @@
 
-#include "main.h"
-#include "dma.h"
-#include "tim.h"
-#include "gpio.h"
-#include "WS2812.h"
+#include "headfile.h"
 
 void SystemClock_Config(void);
 
@@ -19,11 +15,14 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM1_Init();
 
-
+  MG995_init();
   WS2812_init();
+
   while (1)
   {
 
+      HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
+      key_scan();
   }
 
 }
