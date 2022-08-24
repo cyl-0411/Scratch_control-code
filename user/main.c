@@ -12,8 +12,8 @@ int main(void)
 
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_TIM3_Init();
-  MX_TIM1_Init();
+  MX_TIM3_Init();                       //TIM3为64分频，计数器每次加一的时间为15.62ns，重装载值为80，频率为800khz 控制WS2812
+  MX_TIM1_Init();                       //TIM3为64分频，重装载值为20000 控制MG995
 
   MG995_init();
   WS2812_init();
@@ -23,6 +23,7 @@ int main(void)
 
       HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
       key_scan();
+      WB2812_SET_RGB(0,0,255);
   }
 
 }

@@ -5,8 +5,8 @@
 #ifndef STM32G0XX_HAL_MSP_C_WS2812_H
 #define STM32G0XX_HAL_MSP_C_WS2812_H
 
-#define WS2812_SIGNAL_1                 72
-#define WS2812_SIGNAL_0                 25
+#define WS2812_SIGNAL_1                 60
+#define WS2812_SIGNAL_0                 30
 #define WS2812_SIGNAL_RST               0
 
 #define LED_NUM         10
