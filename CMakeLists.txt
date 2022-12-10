@@ -49,11 +49,16 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc Drivers/STM32G0xx_HAL_Driver/Inc Drivers/STM32G0xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32G0xx/Include Drivers/CMSIS/Include)
+include_directories(Drivers/STM32G0xx_HAL_Driver/Inc
+        Drivers/STM32G0xx_HAL_Driver/Inc/Legacy
+        Drivers/CMSIS/Device/ST/STM32G0xx/Include
+        Drivers/CMSIS/Include
+        hardware
+        system)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32G030xx)
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*")
+file(GLOB_RECURSE SOURCES "system/*.*" "Drivers/*.*" "hardware/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32G030F6PX_FLASH.ld)
 
